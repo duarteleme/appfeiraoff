@@ -1,0 +1,28 @@
+<ion-modal-view class="modal-view" ng-controller="cameraCtrl">
+	<ion-header-bar>
+		<h1 class="title modal-title">Tire uma foto</h1>
+		<a class="button button-clear" ng-click="opencamera.hide()"><span class="icon ion-close"></span></a>
+	</ion-header-bar>
+	<ion-content class="padding">
+    <div class="row">
+      <div class="col">
+        <div class="terms-of-service">
+        	<div class="card">
+			  <div class="item item-text-wrap">
+			    <img width="100%" ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
+      			<img width="100%" ng-show="imgURI === undefined" ng-src="http://placehold.it/300x250">
+      			<button ng-show="imgURI !== undefined" class="button button-block button-dark">
+				  <i class="icon ion-checkmark-circled"></i> Enviar
+				</button>
+
+				<button ng-show="imgURI == undefined" ng-click="takePicture()" class="button button-block button-stable">
+				  <i class="icon ion-ios-camera-outline"></i> Tirar uma foto
+				</button>
+
+			  </div>
+			</div>
+    	</div>
+       </div>
+	</div>
+	</ion-content>
+</ion-modal-view>

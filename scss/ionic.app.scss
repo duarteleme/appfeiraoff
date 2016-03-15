@@ -1,0 +1,137 @@
+// Include Sass mixins
+@import "scss/utils/mixins";
+
+// Include Theme variables
+@import "scss/common/theme.variables";
+// Include Ionic override variables
+@import "scss/utils/override_variables";
+
+// Include Bourbon
+@import "www/lib/bourbon/app/assets/stylesheets/_bourbon";
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+
+// Include Ionic override styles
+@import "scss/utils/override_styles";
+
+// Include project Sass variables
+@import "scss/common/common.variables";
+@import "scss/auth/auth.variables";
+@import "scss/sidemenu/sidemenu.variables";
+@import "scss/post/post.variables";
+@import "scss/profile/profile.variables";
+@import "scss/profile/settings.variables";
+@import "scss/shop/shop.variables";
+@import "scss/feed/feed.variables";
+
+// Include custom styles
+@import "scss/common/common.styles";
+@import "scss/auth/welcome.styles";
+@import "scss/auth/auth.styles";
+@import "scss/sidemenu/side-menu.styles";
+@import "scss/post/post.styles";
+@import "scss/profile/profile.styles";
+@import "scss/profile/settings.styles";
+@import "scss/feed/feed.styles";
+@import "scss/shop/shop-cards.styles";
+@import "scss/shop/shop.styles";
+@import "scss/shop/shop-home.styles";
+@import "scss/shop/shop-popular.styles";
+@import "scss/shop/shop-sale.styles";
+@import "scss/shop/cart.styles";
+@import "scss/shop/product-details.styles";
+@import "scss/shop/shipping-address.styles";
+@import "scss/shop/checkout.styles";
+
+.img-load{
+  position:absolute;
+  background-position:fixed;
+  width:100%;
+  height:100% !important;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.top-image{
+  margin-top:40px;
+}
+
+.top-image img{width:150% !important;}
+
+.box{
+  height:250px;
+  position:block;
+}
+
+.box img{width:100%; height:100%;}
+
+.slider-pager .slider-pager-page {
+    color: #813DFF;
+    opacity: 0.4;
+}
+
+.slide-content{
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.button-take {
+    background-color: #6F5898;
+    position: absolute;
+    z-index: 999 !important;
+    width: 60px;
+    height: 60px;
+    top: 60px;
+    right: 15px;
+    border-radius: 50%;
+    color: #322D3B;
+    font-size: 40px;
+    text-align: center;
+    line-height: 63px;
+}
+
+.button-take:hover {
+  background-color: #2E2340;
+  color: #6F5898;
+}
+
+
+.buttonSelected{
+    border-bottom: 10px solid #AE0BFF;
+    color: #d2ac67 !important;
+}
+
+.buttonSelected .desabilitado{
+   
+}
+
+.buttonSelected  .ion-thumbsup{
+  position:absolute;
+  left:10%;
+}
+
+.buttonSelected .desabilitado :after{
+    
+}
+
+
+.buttonSelected i{
+    color: #AE0BFF;
+}
+
+
+.desabilitado i{
+    display:none;
+}
+
+.buttonSelected .desabilitado b{
+    display:none !important;
+}
+
+.buttonSelected .desabilitado i{
+    display:block;
+}

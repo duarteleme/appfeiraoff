@@ -1,0 +1,55 @@
+{
+  "entrada": [
+    {
+      "related_products": [
+        {
+          "price": 174,
+          "description": "Consequat incididunt qui sunt aliqua veniam deserunt dolore elit deserunt ad. Id culpa do tempor nisi mollit voluptate aute minim reprehenderit.",
+          "title": "ad Lorem occaecat qui",
+          "picture": "img/sample_images/products/2.jpeg",
+          "_id": 0
+        },
+        {
+          "price": 171,
+          "description": "Cillum amet eu do sit labore et qui in aliqua minim est non. Pariatur ipsum fugiat elit ut magna cupidatat consectetur sint veniam ut.",
+          "title": "irure occaecat occaecat quis",
+          "picture": "img/sample_images/products/1.jpeg",
+          "_id": 1
+        },
+        {
+          "price": 349,
+          "description": "Occaecat Lorem cupidatat id voluptate nulla ut enim velit esse. Voluptate culpa consectetur exercitation qui ea et nisi officia enim aute duis ullamco.",
+          "title": "culpa duis ex minim",
+          "picture": "img/sample_images/products/6.jpeg",
+          "_id": 2
+        },
+        {
+          "price": 159,
+          "description": "Et laborum nulla labore sint ad magna cupidatat veniam. Sint Lorem duis proident non magna.",
+          "title": "cupidatat sunt cupidatat excepteur",
+          "picture": "img/sample_images/products/7.jpeg",
+          "_id": 3
+        },
+        {
+          "price": 147,
+          "description": "Nulla reprehenderit cillum et ullamco eiusmod eu quis do sint. Ex occaecat proident ullamco cillum ipsum laboris deserunt voluptate veniam pariatur.",
+          "title": "aliquip irure culpa excepteur",
+          "picture": "img/sample_images/products/4.jpeg",
+          "_id": 4
+        },
+        {
+          "price": 375,
+          "description": "Adipisicing ut aliquip ullamco aute ipsum excepteur occaecat. Cupidatat consequat dolor qui veniam reprehenderit ex dolore.",
+          "title": "laborum quis mollit eiusmod",
+          "picture": "img/sample_images/products/6.jpeg",
+          "_id": 5
+        }
+      ],
+      "price": 142,
+      "description": "Adipisicing occaecat dolor enim enim ad amet eiusmod minim consectetur fugiat eu amet minim esse. Proident aliquip in nisi in et.",
+      "title": "non elit consectetur ex",
+      "picture": "img/sample_images/products/1.jpeg",
+      "_id": 0
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+<ion-view view-title="Candidatas" class="shop-home-view">
+  <ion-content>
+    <div class="list shop-home-options-list">
+      <a class="item shop-home-option-item">
+        <div class="row">
+          <div class="col">
+            <pre-img ratio="_2_1" helper-class="shop-home-option-image-outer">
+              <img ng-src="img/garotas.jpg" spinner-on-load>
+            </pre-img>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="row shop-products-narrow-cards-outer">
+      <div class="col col-50 shop-product-narrow-card" ng-repeat="item in eleicao" ui-sref="app.profile.posts({id: item.id})">
+        <div class="list card">
+          <div class="item item-image">
+            <pre-img ratio="_1_1" helper-class="main-image">
+              <img ng-src="http://www.expoinga.com.br/restrito/classes/resize.php?src=/restrito/img/eleicao/{{item.imagem}}&h=400&w=400&zc=1&q=90&s=0" spinner-on-load>
+            </pre-img>
+          </div>
+          <div class="item item-body">
+            <h2 class="card-title">{{item.nome}}</h2>
+            <p class="card-description">{{item.idade}} Anos</p>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </ion-content>
+</ion-view>

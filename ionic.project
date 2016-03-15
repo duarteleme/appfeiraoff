@@ -1,0 +1,14 @@
+{
+  "name": "Expoinga2016",
+  "app_id": "e0424e73",
+  "gulpStartupTasks": [
+    "default",
+    "watch",
+    "templatecache"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ],
+  "documentRoot": "www"
+}

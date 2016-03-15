@@ -1,0 +1,42 @@
+<ion-view view-title="Detalhes" class="product-view" ng-controller="showsCtrl">
+  <ion-content ng-repeat="item in showsGet">
+    <div class="product-card-content">
+      <div class="item item-image">
+        <pre-img ratio="_1_1" helper-class="main-image">
+          <img class="top-image" ng-src="http://www.expoinga.com.br/restrito/img/eventos/{{item.imagem}}" spinner-on-load>
+        </pre-img>
+      </div>
+      
+      
+      <div class="button-bar bar-balanced">
+        <a class="button">{{item.titulo}}</a>
+      </div>
+
+      <div class="button-bar bar-light">
+        <a class="button">{{item.data}}</a>
+        <a class="button">{{item.diadasemana}}</a>
+      </div>
+
+      <div class="item item-body">
+        <p class="product-description">
+          {{item.informacao}}
+        </p>
+      </div>
+    </div>
+
+        <div class="row split-actions">
+          <div class="col">
+            <button class="button button-block button-balanced highlighted" ng-href="{{item.url1}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
+               Comprar ingresso
+            </button>
+          </div>
+          <div class="col">
+            <button class="button button-block button-calm highlighted" ng-href="{{item.url2}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
+               Camarote Prime
+            </button>
+          </div>
+        </div>
+
+    </div>
+  </ion-content>
+</ion-view>

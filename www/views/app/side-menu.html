@@ -1,0 +1,86 @@
+  <ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar ng-class="{
+    'profile-color': ('app.profile' | includedByState)}">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-content has-bouncing="false" scroll="false" class="menu-outer left-menu">
+      <div multi-bg="['img/menu-bg.jpeg']">
+        <div class="row menu-top-options">
+          <div class="col col-top">
+            <ion-list>
+              <ion-item  menu-close>
+              <img width="90%" src="img/expoinga.png">
+              <br><br><br>
+            </ion-list> 
+            <ion-list>
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shop.home">
+                <i class="menu-icon icon ion-android-star-outline"></i>
+                <h2 class="menu-text">Destaques</h2>
+              </ion-item>
+
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shop.popular">
+                <i class="menu-icon icon ion-android-star"></i>
+                <h2 class="menu-text">A Feira</h2>
+              </ion-item>
+ 
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.show">
+                <i class="menu-icon icon ion-android-calendar"></i>
+                <h2 class="menu-text">Shows e Rodeios</h2>
+              </ion-item>
+
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.concurso">
+                <i class="menu-icon icon ion-woman"></i>
+                <h2 class="menu-text">Garota Country</h2>
+              </ion-item>
+              
+              <!--
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.feed">
+                <i class="menu-icon icon ion-calendar"></i>
+                <h2 class="menu-text">Eventos</h2>
+              </ion-item>
+            -->
+
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.info">
+                <i class="menu-icon icon ion-information-circled"></i>
+                <h2 class="menu-text">Informações</h2>
+              </ion-item>
+
+            </ion-list>
+          </div>
+        </div>
+        <div class="row menu-bottom-options">
+          <div class="col col-bottom">
+            <ion-list>
+            
+            <!--
+              <ion-item class="user-item" menu-close ui-sref="app.feed">
+        
+                <h2 class="menu-text">#ExpoingaEuVou</h2>
+                <div class="user-inbox">
+                  <i class="menu-icon icon ion-social-instagram"></i>
+                  <span class="inbox-unread">13</span>
+                </div>
+              </ion-item>
+            -->
+              <ion-item class="full-width-item" menu-close ui-sref="app.shop.sale">
+                <a class="button button-full button-positive" ng-href="http://www.expoinga.com.br/" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
+                  <i class="menu-icon icon ion-android-desktop"></i> ACESSE O WEBSITE
+                </a>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

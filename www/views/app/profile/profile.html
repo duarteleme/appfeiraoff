@@ -1,0 +1,45 @@
+<ion-view  class="profile-view" cache-view="false" view-title="Garota Country 2016">
+  <ion-content has-bouncing='false' ng-repeat="item in eleicaoGet" class="profile-content" delegate-handle="profile-scroll">
+    <div class="row profile-data" style="background:url('http://www.expoinga.com.br/restrito/classes/resize.php?src=/restrito/img/eleicao/{{item.imagem}}&h=600&w=800&zc=1&q=90&s=0&f=8|8|8|2|3,-70') fixed center center no-repeat; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+      <div class="col">
+        <ion-slide-box class="profile-slides" on-slide-changed="slideHasChanged($index)">
+          <ion-slide>
+            <div class="row slide-content">
+              <div class="col col-center user-data">
+                <!-- We need a wrapper with width set for the preload image directive -->
+                <div class="user-image-outer">
+                  <pre-img ratio="_1_1" helper-class="rounded-image">
+                    <img class="user-image" ng-src="http://www.expoinga.com.br/restrito/classes/resize.php?src=/restrito/img/eleicao/{{item.imagem}}&h=200&w=200&zc=1&q=90&s=0" spinner-on-load>
+                	</pre-img>
+                </div>
+                <h2 class="user-name">{{item.nome}}</h2>
+                <p class="user-resume">
+                  {{item.idade}} Anos
+                </p>
+              </div>
+            </div>
+          </ion-slide>
+          <ion-slide>
+            <div class="row slide-content">
+              <div class="col col-center user-data">
+                <p class="user-resume"> 
+                  {{item.descricao}}
+                </p>
+              </div>
+            </div>
+          </ion-slide> 
+        </ion-slide-box>
+      </div>
+    </div>
+    
+    <div class="button-bar  button-full bar-balanced highlighted" ng-click="button_clicked || votar(id) || {buttonSelected: isSelected($index)}" ng-class="{buttonSelected: isSelected($index)}" ng-disabled="button_clicked">
+      <a class="button"> <i class="icon ion-thumbsup"></i> <span class="desabilitado"> <b>Votar</b><i> <i class="icon ion-thumbsup"></i> Votado com Sucesso</i> </span></a>
+    </div>
+    <div class="button-bar  button-full bar-stable highlighted">
+      <a class="button" ng-href="http://instagram.com/{{item.instagram}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'><i class="icon ion-social-instagram"></i> </a>
+      <a class="button" ng-href="http://facebook.com/{{item.facebook}}" onclick='window.open(this.href, "_system", "location=yes"); return false;' class="button"> <i class="icon ion-social-facebook"></i> </a>
+    </div>
+   
+    <ion-nav-view class="profile-sub-views" name="profileContent"></ion-nav-view>
+  </ion-content>
+</ion-view>

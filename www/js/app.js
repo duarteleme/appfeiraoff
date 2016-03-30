@@ -5,6 +5,7 @@ angular.module('underscore', [])
 
 angular.module('expoinga', [
   'ionic',
+  'ngSanitize',
   'ngCordova',
   'expoinga.common.directives',
   'expoinga.app.controllers',
@@ -104,6 +105,28 @@ $stateProvider
     }
   })
 
+  .state('app.wp', {
+    cache: false,
+    url: "/wp",
+    views: {
+      'menuContent': {
+        templateUrl: 'views/app/posts.html',
+        controller: 'postsCtrl'
+      }
+    }
+  })
+
+  .state('app.postsDetalhe', {
+    cache: false,
+    url: '/postsDetalhe/:id',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/app/posts-detalhes.html',
+        controller: 'postsCtrl'
+      }
+    }
+  })
+
   .state('app.settings', {
     url: "/settings",
     views: {
@@ -113,7 +136,6 @@ $stateProvider
       }
     }
   })
-
 
   .state('app.concurso', {
     cache: false,
@@ -299,42 +321,77 @@ $stateProvider
 });
 
 
-angular.module('expoinga').controller('cameraCtrl', function($scope, $ionicModal, $cordovaCamera) {
+// angular.module('expoinga').controller('cameraCtrl', function($scope, $ionicModal, $cordovaCamera) {
   
-  $scope.takePicture = function() {
-        var options = { 
-            quality : 90, 
-            destinationType : Camera.DestinationType.DATA_URL, 
-            sourceType : Camera.PictureSourceType.CAMERA, 
-            allowEdit : false,
-            encodingType: Camera.EncodingType.JPEG,
-            targetWidth: 300,
-            targetHeight: 300,
-            saveToPhotoAlbum: false,
-            correctOrientation:true
-        };
+//   $scope.takePicture = function() {
+//         var options = { 
+//             quality : 90, 
+//             destinationType : Camera.DestinationType.DATA_URL, 
+//             sourceType : Camera.PictureSourceType.CAMERA, 
+//             allowEdit : false,
+//             encodingType: Camera.EncodingType.JPEG,
+//             targetWidth: 300,
+//             targetHeight: 300,
+//             saveToPhotoAlbum: false,
+//             correctOrientation:true
+//         };
  
-        $cordovaCamera.getPicture(options).then(function(imageData) {
-            $scope.imgURI = "data:image/jpeg;base64," + imageData;
-        }, function(err) {
-            // An error occured. Show a message to the user
-        });
+//         $cordovaCamera.getPicture(options).then(function(imageData) {
+//             $scope.imgURI = "data:image/jpeg;base64," + imageData;
+//         }, function(err) {
+//             // An error occured. Show a message to the user
+//         });
 
-        //$cordovaCamera.cleanup().then(); // only for FILE_URI
-    };
+//         //$cordovaCamera.cleanup().then(); // only for FILE_URI
+//     };
 
 
-  $ionicModal.fromTemplateUrl('views/app/legal/terms-of-service.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.terms_of_service_modal = modal;
+//   $ionicModal.fromTemplateUrl('views/app/legal/terms-of-service.html', {
+//     scope: $scope,
+//     animation: 'slide-in-up'
+//   }).then(function(modal) {
+//     $scope.terms_of_service_modal = modal;
+//   });
+
+//   $scope.showTerms = function() {
+//     $scope.terms_of_service_modal.show();
+//   };
+
+// });
+
+
+angular.module('expoinga').controller('postsCtrl', function($scope, $ionicScrollDelegate, $timeout, $ionicLoading, ApiService) {
+
+  $ionicLoading.show({
+    content: 'Carregando',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 200
   });
 
-  $scope.showTerms = function() {
-    $scope.terms_of_service_modal.show();
-  };
 
+  function postes () {
+      ApiService._postes()
+      .success(function (data) {
+        $timeout(function () {
+        $ionicLoading.hide();
+          $scope.postes = data;
+        },1000);
+      });
+  }
+
+  function postesGet () {
+      ApiService._postesGet()
+      .success(function (data) {
+        $timeout(function () {
+        $ionicLoading.hide();
+          $scope.postesGet = data;
+        },1000);
+      });
+  }
+    postes();
+    postesGet(); 
 });
 
 
@@ -432,6 +489,8 @@ angular.module('expoinga').controller('eleicaoCtrl', function($scope, $cordovaDe
     eleicao();
     eleicaoGet();
 });
+
+
 
 angular.module('expoinga').controller('paginasCtrl', function($scope, $ionicScrollDelegate, $timeout, $ionicLoading, ApiService) {
 
@@ -552,8 +611,6 @@ angular.module('expoinga').controller('showsCtrl', function($scope, $timeout, $i
     });
   };
 
-
-
   votacao = function () {
     //http://www.expoinga.com.br/restrito/controller/eleicaoController.php?votar=S&iduser=885522&candidata=20
     return $http.get("http://www.expoinga.com.br/restrito/controller/votacaoController.php", { 
@@ -566,8 +623,28 @@ angular.module('expoinga').controller('showsCtrl', function($scope, $timeout, $i
     });
   };
 
+  postes = function () {
+    //return $http.get("http://flaviovicente.com.br/wp-json/wp/v2/posts?page=1&per_page=10");
+    return $http.get("http://flaviovicente.com.br/api/get_posts/");
+  };
+
+  postesGet = function () {
+    return $http.get("http://flaviovicente.com.br/api/get_post/", { 
+      params: {
+        id: $stateParams.id
+      }
+    });
+  };
+
+
+  // posts = function () {
+  //   return $http.get("http://flaviovicente.com.br/wp-json/wp/v2/posts?page=1&per_page=10");
+  // };
+
 
   return {
+    _postes : postes,
+    _postesGet : postesGet,
     _votacao: votacao,
     _shop: shopService,
     _shopGet: shopGetService,

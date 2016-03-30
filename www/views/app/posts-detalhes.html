@@ -1,0 +1,26 @@
+<ion-view view-title="Detalhes Posts" class="product-view">
+  <ion-content>
+    <div class="product-card-content" ng-repeat="item in postesGet.post">
+      
+      <!-- <ion-slide-box on-slide-changed="slideHasChanged($index)">  
+        <ion-slide ng-repeat="imagem in item.galeria">
+          <div class="box">
+            <img ng-src="http://www.expoinga.com.br/restrito/img/fotos/{{imagem.nomepath}}">
+          </div>
+        </ion-slide>
+      </ion-slide-box> -->
+
+      <div class="item item-body">
+        <h2 class="product-title">{{postesGet.title}}</h2>
+      </div>
+      <div class="item item-body">
+        <p class="product-description" ng-bind-html="myHTML">
+            {{item.content}}
+        </p>
+      </div>
+    
+
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,6 +1,6 @@
 <ion-view view-title="Detalhes Posts" class="product-view">
   <ion-content>
-    <div class="product-card-content" ng-repeat="item in postesGet.post">
+    <div class="product-card-content" ng-repeat="item in data.postesGet.post">
       
       <!-- <ion-slide-box on-slide-changed="slideHasChanged($index)">  
         <ion-slide ng-repeat="imagem in item.galeria">
@@ -11,7 +11,7 @@
       </ion-slide-box> -->
 
       <div class="item item-body">
-        <h2 class="product-title">{{postesGet.title}}</h2>
+        <h2 class="product-title">{{item.title}}</h2>
       </div>
       <div class="item item-body">
         <p class="product-description" ng-bind-html="myHTML">

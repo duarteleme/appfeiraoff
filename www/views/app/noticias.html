@@ -1,0 +1,36 @@
+<ion-view view-title="Notícias" ng-controller"NoticiasCtrl" cache-view="true" class="shop-home-view">
+  <ion-content>
+    
+  <!--  
+  <div class="list shop-home-options-list">
+    <a class="item shop-home-option-item">
+      <div class="row">
+        <div class="col">
+          <pre-img ratio="_2_1" helper-class="shop-home-option-image-outer">
+            <img ng-src="img/topshow.jpg" spinner-on-load>
+          </pre-img>
+        </div>
+      </div>
+    </a>
+  </div>
+  -->
+ 
+    <div class="row">
+      
+      <div class="col col-100">
+        
+        <div  ng-repeat="item in noticia" ui-sref="app.noticia-detalhe({id: item.id})">
+            <a class="item item-thumbnail-left">
+              <img src="img/info.jpg">
+              <h2>{{item.titulo}}</h2>
+              <p>{{item.texto01}}</p><br>
+              <p class="card-description"><b>Leia mais...</b></p>
+            </a>
+        </div><br><br>
+
+      </div>
+    </div>
+
+
+  </ion-content>
+</ion-view>

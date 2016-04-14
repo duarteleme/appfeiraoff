@@ -11,7 +11,7 @@ angular.module('expoinga', [
   'expoinga.app.controllers',
   'expoinga.auth.controllers',
   'expoinga.app.services',
-  'expoinga.views',
+  //'expoinga.views',
   'underscore',
   'angularMoment',
   'ngIOS9UIWebViewPatch'
@@ -105,17 +105,6 @@ $stateProvider
     }
   })
 
-  .state('app.wp', {
-    cache: false,
-    url: "/wp",
-    views: {
-      'menuContent': {
-        templateUrl: 'views/app/posts.html',
-        controller: 'postsCtrl'
-      }
-    }
-  })
-
   .state('app.postsDetalhe', {
     cache: false,
     url: '/postsDetalhe/:id',
@@ -204,6 +193,28 @@ $stateProvider
     views: {
       'menuContent': {
         templateUrl: "views/app/shop/shop.html"
+      }
+    }
+  })
+
+  .state('app.noticias', {
+    cache: false,
+    url: "/noticias",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/noticias.html",
+        controller: 'NoticiasCtrl'
+      }
+    }
+  })
+
+  .state('app.noticia-detalhe', {
+    cache: false,
+    url: "/noticia-detalhe/:id",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/noticia-detalhe.html",
+        controller: 'NoticiasCtrl'
       }
     }
   })
@@ -394,6 +405,41 @@ angular.module('expoinga').controller('postsCtrl', function($scope, $ionicScroll
     postesGet(); 
 });
 
+
+angular.module('expoinga').controller('NoticiasCtrl', function($scope, $ionicScrollDelegate, $timeout, $ionicLoading, ApiService) {
+
+  $ionicLoading.show({
+    content: 'Carregando',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 200
+  });
+
+
+  function noticia () {
+      ApiService._noticia()
+      .success(function (data) {
+        $timeout(function () {
+        $ionicLoading.hide();
+          $scope.noticia = data;
+        },1000);
+      });
+  }
+
+  function noticiaGet () {
+      ApiService._noticiaGet()
+      .success(function (data) {
+        $timeout(function () {
+        $ionicLoading.hide();
+          $scope.noticiaGet = data;
+        },1000);
+      });
+  }
+
+    noticia();
+    noticiaGet();
+});
 
 angular.module('expoinga').controller('ShopCtrl', function($scope, $ionicScrollDelegate, $timeout, $ionicLoading, ApiService) {
 
@@ -611,6 +657,19 @@ angular.module('expoinga').controller('showsCtrl', function($scope, $timeout, $i
     });
   };
 
+  noticia = function () {
+    return $http.get(APIcms + "noticias.php?tipo=imprensa&user=4&id=0");
+  };
+
+
+  noticiaGet = function () {
+    return $http.get(APIcms + "noticias.php?tipo=imprensa&user=4", { 
+      params: {
+        id: $stateParams.id
+      }
+    });
+  };
+
   votacao = function () {
     //http://www.expoinga.com.br/restrito/controller/eleicaoController.php?votar=S&iduser=885522&candidata=20
     return $http.get("http://www.expoinga.com.br/restrito/controller/votacaoController.php", { 
@@ -623,19 +682,6 @@ angular.module('expoinga').controller('showsCtrl', function($scope, $timeout, $i
     });
   };
 
-  postes = function () {
-    //return $http.get("http://flaviovicente.com.br/wp-json/wp/v2/posts?page=1&per_page=10");
-    return $http.get("http://flaviovicente.com.br/api/get_posts/");
-  };
-
-  postesGet = function () {
-    return $http.get("http://flaviovicente.com.br/api/get_post/", { 
-      params: {
-        id: $stateParams.id
-      }
-    });
-  };
-
 
   // posts = function () {
   //   return $http.get("http://flaviovicente.com.br/wp-json/wp/v2/posts?page=1&per_page=10");
@@ -643,8 +689,8 @@ angular.module('expoinga').controller('showsCtrl', function($scope, $timeout, $i
 
 
   return {
-    _postes : postes,
-    _postesGet : postesGet,
+    _noticia : noticia,
+    _noticiaGet : noticiaGet,
     _votacao: votacao,
     _shop: shopService,
     _shopGet: shopGetService,

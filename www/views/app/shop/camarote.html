@@ -1,0 +1,52 @@
+<ion-view view-title="A Feira" ng-controller="paginasCtrl" class="product-view">
+  <ion-content>
+    <div class="product-card-content">
+      
+      <ion-slide-box on-slide-changed="slideHasChanged($index)">  
+        <ion-slide>
+          <div class="box">
+            <img ng-src="http://www.expoinga.com.br/restrito/img/fotos/4_337_2111553948.jpg">
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class="box">
+            <img ng-src="http://www.expoinga.com.br/restrito/img/fotos/4_337_1652880212.jpg">
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class="box">
+            <img ng-src="http://www.expoinga.com.br/restrito/img/fotos/4_337_1535399590.jpg">
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class="box">
+            <img ng-src="http://www.expoinga.com.br/restrito/img/fotos/4_337_400480483.jpg">
+          </div>
+        </ion-slide>
+        
+      </ion-slide-box>
+
+      <div class="item item-body">
+        <h2 class="product-title">Camarote Prime</h2>
+      </div>
+      <div class="item item-body">
+        <p class="product-description">
+          <pre>Assista aos melhores shows e rodeios em um espaço especialmente planejado para você!
+          </pre>
+
+          <img src="http://www.expoinga.com.br/download/camarote_prime.png" width="100%" />
+
+        </p>
+      </div>
+
+
+    </div>
+    
+    <a ui-sref="app.show">
+        <button class="button button-block button-positive">
+          Veja a lista de shows
+        </button>
+    </a>
+
+  </ion-content>
+</ion-view>

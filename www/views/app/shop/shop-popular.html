@@ -1,7 +1,52 @@
 <ion-view view-title="A Feira" class="shop-popular-view" ng-controller="paginasCtrl">
   <ion-content>
+
+    <div class="row shop-products-narrow-cards-outer">
+      <div class="col col-100 shop-product-narrow-card" ui-sref="app.otema({id: 1})">
+          <div class="list card">
+            <div class="item item-image">
+              <pre-img ratio="_1_1" helper-class="main-image">
+                <div class="img-load" style="background-image:url('img/otema.jpg');">
+                </div>
+              </pre-img>
+            </div>
+            <div class="item item-body">
+              <h2 class="card-title">Expoingá 2016 - O Tema</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <div class="row shop-products-narrow-cards-outer">
       
+      <div class="col col-50 shop-product-narrow-card" ui-sref="app.presidente">
+        <div class="list card">
+          <div class="item item-image">
+            <pre-img ratio="_1_1" helper-class="main-image">
+              <div class="img-load" style="background-image:url('img/presidente.jpg');">
+              </div>
+            </pre-img>
+          </div>
+          <div class="item item-body">
+            <h2 class="card-title">Palavra da Presidente da SRM</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col col-50 shop-product-narrow-card" ui-sref="app.prefeito">
+        <div class="list card">
+          <div class="item item-image">
+            <pre-img ratio="_1_1" helper-class="main-image">
+              <div class="img-load" style="background-image:url('img/prefeito.jpg');">
+              </div>
+            </pre-img>
+          </div>
+          <div class="item item-body">
+            <h2 class="card-title">Palavra do Prefeito de Maringá</h2>
+          </div>
+        </div>
+      </div>
+
       <div class="col col-50 shop-product-narrow-card" ng-repeat="item in paginas" ui-sref="app.product-detail({id: item.id})">
         <div class="list card">
           <div class="item item-image">
@@ -18,51 +63,52 @@
         </div>
       </div>
 
-   
-<!--
-   <div class="row shop-products-narrow-cards-outer">
-      <div ng-repeat="product in products" class="col col-50 shop-product-narrow-card" ui-sref="app.product-detail({productId: product._id})">
+      <div class="col col-50 shop-product-narrow-card" ui-sref="app.merchan">
         <div class="list card">
           <div class="item item-image">
             <pre-img ratio="_1_1" helper-class="main-image">
-              <img ng-src="http://www.expoinga.com.br/restrito/img/paginas/{{product.imagem}}" spinner-on-load>
+              <div class="img-load" style="background-image:url('http://www.expoinga.com.br/restrito/img/paginas/4_31_1539416395.jpg');">
+              </div>
             </pre-img>
           </div>
           <div class="item item-body">
-            <h2 class="card-title">Titulo</h2>
-            <p class="card-description">Subtitulo</p>
+            <h2 class="card-title">Merchandising</h2>
           </div>
-        </div>
-   
-
-          
-        <div ng-repeat="product in products" class="col col-50 shop-product-narrow-card" ui-sref="app.product-detail({productId: product._id})">
-        <div class="list card">
-          <div class="item item-image">
-            <pre-img ratio="_1_1" helper-class="main-image">
-              <img ng-src="http://www.expoinga.com.br/restrito/img/paginas/{{product.imagem}}" spinner-on-load>
-            </pre-img>
-          </div>
-          <div class="item item-body">
-            <h2 class="card-title">{{product.titulo}}</h2>
-            <p class="card-description">{{product.texto02}}</p>
-          </div>
-          
-          <div class="item item-image">
-            <pre-img ratio="_1_1" helper-class="main-image">
-              <img ng-src="{{product.picture}}" spinner-on-load>
-            </pre-img>
-          </div>
-          <div class="item item-body">
-            <h2 class="card-title">{{product.title}}</h2>
-            <p class="card-description"><b>${{product.price}}</b> - {{product.description}}</p>
-          </div>
-         
         </div>
       </div>
-      
- </div>
--->
+
+      <div class="col col-50 shop-product-narrow-card" ui-sref="app.numeros">
+        <div class="list card">
+          <div class="item item-image">
+            <pre-img ratio="_1_1" helper-class="main-image">
+              <div class="img-load" style="background-image:url('img/numeros.jpg');">
+              </div>
+            </pre-img>
+          </div>
+          <div class="item item-body">
+            <h2 class="card-title">Números</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col col-50 shop-product-narrow-card" ui-sref="app.camarote">
+        <div class="list card">
+          <div class="item item-image">
+            <pre-img ratio="_1_1" helper-class="main-image">
+              <div class="img-load" style="background-image:url('http://www.expoinga.com.br/restrito/img/paginas/4_20_406263379.jpg');">
+              </div>
+            </pre-img>
+          </div>
+          <div class="item item-body">
+            <h2 class="card-title">Camarote</h2>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+   
 
   </ion-content>
 </ion-view>

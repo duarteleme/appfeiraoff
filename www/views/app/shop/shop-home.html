@@ -30,7 +30,7 @@
 
     <div class="row shop-products-narrow-cards-outer">
       <div class="col col-50 shop-product-narrow-card" ng-repeat="item in shop">
-        <div class="list card" ui-sref="app.product-detail({id: item.texto02})">
+        <div class="list card" ui-sref="{{item.texto02}}">
           <div class="item item-image">
             <pre-img ratio="_1_1" helper-class="main-image">
               <img ng-src="http://www.expoinga.com.br/restrito/classes/resize.php?src=/restrito/img/paginas/{{item.imagem}}&h=450&w=450&zc=1&q=90&s=0" spinner-on-load>
@@ -43,6 +43,69 @@
         </div>
       </div>
     </div>
+
+    <div class="row shop-products-narrow-cards-outer">
+      
+      <div class="col col-50 shop-product-narrow-card">
+        <div class="list card" ui-sref="app.otema">
+          <div class="item item-image">
+            <pre-img ratio="_1_1" helper-class="main-image">
+              <img ng-src="http://www.expoinga.com.br/restrito/img/paginas/4_37_259633156.jpg" spinner-on-load>
+            </pre-img>
+          </div>
+          <div class="item item-body">
+            <h2 class="card-title">O Tema</h2>
+            <p class="card-description">Expoingá 2016</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col col-50 shop-product-narrow-card">
+        <div class="list card" ui-sref="app.show">
+          <div class="item item-image">
+            <pre-img ratio="_1_1" helper-class="main-image">
+              <img ng-src="img/shows.jpg" spinner-on-load>
+            </pre-img>
+          </div>
+          <div class="item item-body">
+            <h2 class="card-title">Shows</h2>
+            <p class="card-description">Veja a lista completa</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col col-50 shop-product-narrow-card">
+        <div class="list card" ui-sref="app.hotel">
+          <div class="item item-image">
+            <pre-img ratio="_1_1" helper-class="main-image">
+              <img ng-src="img/hoteis.jpg" spinner-on-load>
+            </pre-img>
+          </div>
+          <div class="item item-body">
+            <h2 class="card-title">Onde se Hospedar</h2>
+            <p class="card-description">Lista de Hotéis</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col col-50 shop-product-narrow-card">
+        <div class="list card" ui-sref="app.mediasocial">
+          <div class="item item-image">
+            <pre-img ratio="_1_1" helper-class="main-image">
+              <img ng-src="img/socialmedia.jpg" spinner-on-load>
+            </pre-img>
+          </div>
+          <div class="item item-body">
+            <h2 class="card-title">Mídias Sociais</h2>
+            <p class="card-description">Acesse</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
 
    
   </ion-content>

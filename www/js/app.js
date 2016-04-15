@@ -148,6 +148,7 @@ $stateProvider
     }
   })
 
+
   .state('app.show-detalhe', {
     cache: false,
     url: "/show-detalhe/:id",
@@ -285,6 +286,106 @@ $stateProvider
       'menuContent': {
         templateUrl: "views/app/shop/checkout.html",
         controller: "CheckoutCtrl"
+      }
+    }
+  })
+
+  .state('app.otema', {
+    cache: false,
+    url: '/shop/1',
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/shop/otema.html"
+      }
+    }
+  })
+
+  .state('app.presidente', {
+    cache: false,
+    url: '/shop/presidente',
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/shop/presidente.html"
+      }
+    }
+  })
+
+  .state('app.parque', {
+    cache: false,
+    url: '/shop/parque',
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/shop/parque.html"
+      }
+    }
+  })
+
+  .state('app.arena', {
+    cache: false,
+    url: '/shop/arena',
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/shop/arena.html"
+      }
+    }
+  })
+
+  .state('app.prefeito', {
+    cache: false,
+    url: '/shop/prefeito',
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/shop/prefeito.html"
+      }
+    }
+  })
+
+  .state('app.camarote', {
+    cache: false,
+    url: '/shop/camarote',
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/shop/camarote.html"
+      }
+    }
+  })
+
+  .state('app.numeros', {
+    cache: false,
+    url: '/shop/numeros',
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/shop/numeros.html"
+      }
+    }
+  })
+
+  .state('app.hotel', {
+    cache: false,
+    url: '/shop/hotel',
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/shop/hotel.html"
+      }
+    }
+  })
+
+  .state('app.mediasocial', {
+    cache: false,
+    url: '/shop/mediasocial',
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/shop/socialmedia.html"
+      }
+    }
+  })
+
+  .state('app.merchan', {
+    cache: false,
+    url: '/shop/merchan',
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/shop/merchan.html"
       }
     }
   })
@@ -643,6 +744,21 @@ angular.module('expoinga').controller('showsCtrl', function($scope, $timeout, $i
       }
     });
   };
+
+  
+  apphomeGet = function () {
+    return $http.get(APIcms + "noticias.php?tipo=apphome&user=4&id=0");
+  };
+
+
+  apphomeGetService = function () {
+    return $http.get(APIcms + "noticias.php?tipo=apphome&user=4", { 
+      params: {
+        id: $stateParams.id
+      }
+    });
+  };
+
 
   showsGet = function () {
     return $http.get(APIcms + "eventos.php?tipo=show&user=4");

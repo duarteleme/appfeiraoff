@@ -140,8 +140,57 @@
     padding-top: 0vh !important;
 }
 
-.titulo-noticia{
-    font-size: 26px !important;
-    font-weight: bold !important;
-    display:none;
+.titulo-noticia {
+  font-size: 26px !important;
+  font-weight: bold !important;
+}
+
+code, kbd, pre, samp {
+    font-size: initial !important;
+    font-family: none !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.hoteis{
+    margin-bottom:30px;
+    margin-top:25px;
+}
+
+.hoteis img{
+    width:90%;
+    margin-right:20px;
+}
+.hoteis h2{
+  padding:0px;
+  margin:-5px 0px 7px 0px;
+  font-weight: bold;
+}
+
+.hoteis i{
+  margin-right:0px;
+}
+
+.telefone, .email, .endereco, .site{
+  border-bottom:1px solid #d1d1d1;
+  padding:10px 0px;
+  font-size:13px;
+}
+
+.site{
+  border-bottom:0px solid #d1d1d1 !important;
+}
+
+.hoteis{
+  border-bottom:5px solid #999;
+}
+
+a {
+    color:#000;
+}
+
+.hoteis i{
+    margin-right:6px;
 }

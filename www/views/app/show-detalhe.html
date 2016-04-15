@@ -26,16 +26,28 @@
 
         <div class="row split-actions">
           <div class="col">
-            <button class="button button-block button-balanced highlighted" ng-href="{{item.url1}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
+            <a ng-href="{{item.url1}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
+            <button class="button button-block button-balanced highlighted">
                Comprar ingresso
             </button>
+            </a>
           </div>
           <div class="col">
-            <button class="button button-block button-calm highlighted" ng-href="{{item.url2}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
+            <a ng-href="{{item.url1}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
+            <button class="button button-block button-calm highlighted">
                Camarote Prime
             </button>
+            </a>
           </div>
         </div>
+
+        <div class="row">
+        <div class="col">
+          <pre-img ratio="_2_1" helper-class="shop-home-option-image-outer">
+            <img ng-src="img/pontos.jpg" width="100%" spinner-on-load>
+          </pre-img>
+        </div>
+      </div>
 
     </div>
   </ion-content>

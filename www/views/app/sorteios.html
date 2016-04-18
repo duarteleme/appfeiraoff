@@ -1,0 +1,25 @@
+<ion-view class="welcome-view" cache-view="false">
+
+  <ion-content scroll="false">
+    <div multi-bg="bgs" style="background: url('img/menu-bg.jpeg') 10% 10%">
+      <div class="top-content">
+        <img width="100%" src="img/otema.jpg">
+      </div>
+      <div class="bottom-content row">
+        <div class="col col-bottom">
+          <a class="facebook-sign-in button-large icon-left ion-social-facebook button button-block" ng-click="LoginwithFacebook()">
+            Participar com Facebook
+          </a>
+          <a class="dont-have-facebook button button-clear button-block" ui-sref="app.sorteios-lista({tipo: 'sorteio'})">
+            Ver todos os sorteios
+          </a>
+
+          <p class="legal-notice">
+            Ao participar você estará de acordo com os <a ng-click="showTerms()">Termos do Sorteio</a>
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

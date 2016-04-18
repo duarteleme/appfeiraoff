@@ -1,0 +1,14 @@
+<ion-view view-title="Julgamentos e Provas" class="shop-popular-view">
+  <ion-content>
+    <div class="list">
+      <a class="item" ng-repeat="item in programacao" ui-sref="app.programacao-detalhe({id: item.id})">
+        <h2><pre><b>{{item.titulo}}</b></pre></h2>
+        <p class="categoriaevento"> <i class="icon ion-ios-keypad"></i> Categoria: Julgamentos/Provas</p>
+        <p><i class="icon ion-ios-location"></i> {{item.local}}</p>
+        <div class="item-icon-right">
+        <i class="icon ion-arrow-right-c"></i>
+        </div>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

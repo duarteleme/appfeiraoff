@@ -7,9 +7,10 @@ angular.module('expoinga', [
   'ionic',
   'ngSanitize',
   'ngCordova',
+  'ngCordovaOauth',
   'expoinga.common.directives',
   'expoinga.app.controllers',
-  'expoinga.auth.controllers',
+  //'expoinga.auth.controllers',
   'expoinga.app.services',
   //'expoinga.views',
   'underscore',
@@ -74,6 +75,27 @@ $stateProvider
     }
   })
 
+  .state('app.sorteios', {
+    url: "/sorteios",
+    views: {
+      'menuContent': {
+        templateUrl: 'views/app/sorteios.html',
+        controller: 'LoginwithFacebook'
+      }
+    }
+  })
+
+  .state('app.sorteios-lista', {
+    cache: false,
+    url: '/sorteios-lista/:tipo',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/app/sorteios-lista.html',
+        controller: 'programacaoCtrl'
+      }
+    }
+  })
+
   .state('app.profile', {
     cache: false,
     url: '/profile/:Id',
@@ -112,6 +134,61 @@ $stateProvider
       'menuContent': {
         templateUrl: 'views/app/posts-detalhes.html',
         controller: 'postsCtrl'
+      }
+    }
+  })
+
+  .state('app.julgamentos', {
+    cache: false,
+    url: '/julgamentos/:tipo',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/app/julgamentos.html',
+        controller: 'programacaoCtrl'
+      }
+    }
+  })
+  
+  .state('app.programacao', {
+    cache: false,
+    url: '/programacao/:tipo',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/app/programacao.html',
+        controller: 'programacaoCtrl'
+      }
+    }
+  })
+
+  .state('app.eventos', {
+    cache: false,
+    url: '/eventos/:tipo',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/app/programacao-eventos.html',
+        controller: 'programacaoCtrl'
+      }
+    }
+  })
+
+  .state('app.leiloes', {
+    cache: false,
+    url: '/leiloes/:tipo',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/app/programacao-leiloes.html',
+        controller: 'programacaoCtrl'
+      }
+    }
+  })
+
+  .state('app.programacao-detalhe', {
+    cache: false,
+    url: '/programacao-detalhe/:id/:item',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/app/programacao-detalhe.html',
+        controller: 'programacaoCtrl'
       }
     }
   })
@@ -471,6 +548,50 @@ $stateProvider
 
 // });
 
+angular.module('expoinga').controller('LoginwithFacebook',function($scope,$cordovaOauth){
+ $scope.LoginwithFacebook = function(){
+ console.log("clicked");
+ $cordovaOauth.facebook("1733143860298328", ["email"]).then(function(result) {
+ alert("Auth Success!" +result);
+ }, function(error) {
+ alert("Auth Failed!" +error);
+ });
+ };
+});
+
+angular.module('expoinga').controller('programacaoCtrl', function($scope, $ionicScrollDelegate, $timeout, $ionicLoading, ApiService) {
+
+  $ionicLoading.show({
+    content: 'Carregando',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 200
+  });
+
+
+  function programacao () {
+      ApiService._programacao()
+      .success(function (data) {
+        $timeout(function () {
+        $ionicLoading.hide();
+          $scope.programacao = data;
+        },1000);
+      });
+  }
+
+  function programacaoGet () {
+      ApiService._programacaoGet()
+      .success(function (data) {
+        $timeout(function () {
+        $ionicLoading.hide();
+          $scope.programacaoGet = data;
+        },1000);
+      });
+  }
+    programacao();
+    programacaoGet(); 
+});
 
 angular.module('expoinga').controller('postsCtrl', function($scope, $ionicScrollDelegate, $timeout, $ionicLoading, ApiService) {
 
@@ -760,13 +881,36 @@ angular.module('expoinga').controller('showsCtrl', function($scope, $timeout, $i
   };
 
 
+  
+ // programacao = function () {
+ //   return $http.get(APIcms + "eventos.php?&user=4&id=");
+ // };
+
+  programacao = function () {
+    return $http.get(APIcms + "eventos.php?&user=4", { 
+      params: {
+        id: '0',
+        tipo: $stateParams.tipo
+      }
+    });
+  };
+
+
+  programacaoGet = function () {
+    return $http.get(APIcms + "eventos.php?&user=4", { 
+      params: {
+        id: $stateParams.id
+      }
+    });
+  };
+
   showsGet = function () {
-    return $http.get(APIcms + "eventos.php?tipo=show&user=4");
+    return $http.get(APIcms + "show.php?tipo=show&user=4&id=0");
   };
 
 
   showsGetService = function () {
-    return $http.get(APIcms + "eventos.php?tipo=show&user=4", { 
+    return $http.get(APIcms + "show.php?tipo=show&user=4", { 
       params: {
         id: $stateParams.id
       }
@@ -805,6 +949,8 @@ angular.module('expoinga').controller('showsCtrl', function($scope, $timeout, $i
 
 
   return {
+    _programacao : programacao,
+    _programacaoGet : programacaoGet,
     _noticia : noticia,
     _noticiaGet : noticiaGet,
     _votacao: votacao,

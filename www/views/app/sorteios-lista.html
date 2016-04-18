@@ -1,0 +1,24 @@
+<ion-view view-title="Sorteios" class="shop-popular-view">
+  <ion-content>
+
+    <div class="list card" ng-repeat="item in programacao" ui-sref="app.programacao-detalhe({id: item.id})">
+      <div class="item item-avatar">
+        <img src="img/otema.jpg">
+        <h2>{{item.titulo}}</h2>
+        <p>Sorteio em {{item.data}} às {{item.horario}}h</p>
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" src="img/topshow.jpg">
+        <p>
+          {{item.descricao}}
+        </p>
+        <p>
+          <a href="#" class="subdued"><i class="icon ion-ios-clock-outline"></i> {{item.informacao}}...</a>
+        </p>
+      </div>
+
+    </div>
+
+  </ion-content>
+</ion-view>

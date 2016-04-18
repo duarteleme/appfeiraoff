@@ -38,7 +38,8 @@
     "cordova-plugin-whitelist@1.0.0",
     "cordova-plugin-splashscreen",
     "com.ionic.keyboard",
-    "cordova-plugin-transport-security"
+    "cordova-plugin-transport-security",
+    "cordova-plugin-inappbrowser"
   ],
   "cordovaPlatforms": [
     "android",

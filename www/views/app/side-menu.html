@@ -13,7 +13,7 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <ion-content has-bouncing="false" scroll="false" class="menu-outer left-menu">
+    <ion-content has-bouncing="false" scroll="true" class="menu-outer left-menu">
       <div multi-bg="['img/menu-bg.jpeg']">
         <div class="row menu-top-options">
           <div class="col col-top">
@@ -48,13 +48,21 @@
                 <h2 class="menu-text">Notícias</h2>
               </ion-item>
 
-
-              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.feed">
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.programacao({tipo: 'geral'})">
                 <i class="menu-icon icon ion-calendar"></i>
-                <h2 class="menu-text">Eventos</h2>
+                <h2 class="menu-text">Programação</h2>
               </ion-item>
 
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.julgamentos({tipo: 'julgamento'})">
+                <i class="menu-icon icon ion-ios-paper"></i>
+                <h2 class="menu-text">Julgamentos e Provas</h2>
+              </ion-item>
 
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.sorteios">
+                <i class="menu-icon icon ion-pricetag"></i>
+                <h2 class="menu-text">Sorteios</h2>
+              </ion-item>
+              
               <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.info">
                 <i class="menu-icon icon ion-information-circled"></i>
                 <h2 class="menu-text">Informações</h2>
@@ -66,14 +74,11 @@
         <div class="row menu-bottom-options">
           <div class="col col-bottom">
             <ion-list>
-            
-          
               <ion-item class="user-item" menu-close ui-sref="app.feed">
         
                 <h2 class="menu-text">#ExpoingaEuVou</h2>
                 <div class="user-inbox">
                   <i class="menu-icon icon ion-social-instagram"></i>
-                  <span class="inbox-unread">13</span>
                 </div>
               </ion-item>
             

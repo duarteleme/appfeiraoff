@@ -1,0 +1,27 @@
+<div class="tabs tabs-balanced tabe">
+  <a class="tab-item active" ui-sref="app.programacao({tipo: 'geral'})">
+    Geral
+  </a>
+  <a class="tab-item" ui-sref="app.eventos({tipo: 'evento'})">
+    Eventos
+  </a>
+  <a class="tab-item" ui-sref="app.leiloes({tipo: 'leilao'})">
+    Leilões
+  </a>
+</div>
+
+<ion-view view-title="Programação Geral" class="shop-popular-view">
+  <ion-content>
+    <div class="list">
+      <a class="item" ng-repeat="item in programacao" ui-sref="app.programacao-detalhe({id: item.id})">
+        <h2><pre><b>{{item.titulo}}</b></pre></h2>
+        <p><i class="icon ion-android-calendar"></i> {{item.diadasemana}} - {{item.data}} - {{item.horario}}h</p>
+        <p class="categoriaevento"> <i class="icon ion-ios-keypad"></i> Categoria: {{item.tipo}}</p>
+        <p><i class="icon ion-ios-location"></i> {{item.local}}</p>
+        <div class="item-icon-right">
+        <i class="icon ion-arrow-right-c"></i>
+        </div>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

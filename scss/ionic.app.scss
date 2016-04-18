@@ -147,7 +147,7 @@
 
 code, kbd, pre, samp {
     font-size: initial !important;
-    font-family: none !important;
+    font-family: inherit !important;
 }
 
 a {
@@ -167,6 +167,12 @@ a {
   padding:0px;
   margin:-5px 0px 7px 0px;
   font-weight: bold;
+}
+
+.tituloevento {
+    line-height: 23px;
+    padding: 5px !important;
+    height: 65px;
 }
 
 .hoteis i{
@@ -193,4 +199,28 @@ a {
 
 .hoteis i{
     margin-right:6px;
+}
+
+.button-bar{
+  margin-top:-8px;
+}
+
+.categoriaevento {
+    text-transform: capitalize;
+}
+
+.tabe .active {
+    background: #6A3E80;
+}
+
+.menu-outer .menu-top-options {
+    height: initial;
+}
+
+.menu-outer .menu-bottom-options {
+     height: 20vh;
+}
+
+.welcome-view .spinner-on-load {
+    display: none;
 }

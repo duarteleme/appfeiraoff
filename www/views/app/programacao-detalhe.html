@@ -21,6 +21,20 @@
         </p>
       </div>
 
+      <div ng-show="item.mapa == 'curso'">
+        <a ng-href="mailto:inscricao@expoinga.com.br?subject=Inscricao no Evento: {{item.titulo}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
+        <button class="button button-block button-balanced highlighted">
+           Realizar Inscrição
+        </button>
+        </a>
+      </div>
+
+      <div ng-show="item.tipo == 'sorteio'">
+      <a ng-href="http://www.expoinga.com.br/sorteios/index.php?sorteio={{item.id}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'class="facebook-sign-in button-large icon-left ion-pricetag button button-block">
+            Quero Participar
+        </a>
+      </div>
+
       <div ng-show="item.tipo == 'show'">
         
         <div class="row split-actions">
@@ -46,8 +60,6 @@
             <img ng-src="img/pontos.jpg" width="100%" spinner-on-load>
           </pre-img>
         </div>
-
-
       </div>
 
     </div>

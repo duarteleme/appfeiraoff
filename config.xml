@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.asbcomunicacao.expoinga100" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.startapplabs.expoinga" version="1.4.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Expoinga</name>
   <description>
     Aplicativo do Evento Expoingá 2016, feira do agronegócio que acontece na cidade de Maringá no Paraná
@@ -11,6 +11,7 @@
   <access origin="*"/>
   <allow-navigation href="*"/>
   <allow-intent href="*"/>
+  <allow-intent href="mailto:*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
@@ -19,7 +20,7 @@
   <preference name="SplashScreenDelay" value="4000"/>
   <preference name="orientation" value="portrait"/>
   <feature name="StatusBar">
-    <param name="ios-package" value="CDVStatusBar" onload="true"/>
+    <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>
   <platform name="android">
     <icon src="resources\android\icon\drawable-ldpi-icon.png" density="ldpi"/>
@@ -69,8 +70,8 @@
   <plugin name="cordova-plugin-console" spec="^1.0.1"/>
   <plugin name="cordova-plugin-device" spec="^1.0.1"/>
   <plugin name="cordova-plugin-dialogs" spec="^1.1.1"/>
-  <plugin name="cordova-plugin-whitelist" spec="^1.0.0"/>
   <plugin name="com.ionic.keyboard" spec="https://github.com/driftyco/ionic-plugins-keyboard.git"/>
   <plugin name="cordova-plugin-splashscreen" spec="^2.1.0"/>
   <plugin name="cordova-plugin-transport-security" spec="^0.1.1"/>
+  <plugin name="cordova-plugin-whitelist" spec="~1.2.1"/>
 </widget>

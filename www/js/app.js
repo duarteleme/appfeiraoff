@@ -7,7 +7,7 @@ angular.module('expoinga', [
   'ionic',
   'ngSanitize',
   'ngCordova',
-  'ngCordovaOauth',
+  //'ngCordovaOauth',
   'expoinga.common.directives',
   'expoinga.app.controllers',
   //'expoinga.auth.controllers',
@@ -80,7 +80,7 @@ $stateProvider
     views: {
       'menuContent': {
         templateUrl: 'views/app/sorteios.html',
-        controller: 'LoginwithFacebook'
+        controller: 'faceloginCtrl'
       }
     }
   })
@@ -275,6 +275,17 @@ $stateProvider
     }
   })
 
+  .state('app.feeds', {
+    cache: false,
+    url: "/feeds",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/feeds.html",
+        controller: 'feedsCtrl'
+      }
+    }
+  })
+
   .state('app.noticias', {
     cache: false,
     url: "/noticias",
@@ -427,6 +438,16 @@ $stateProvider
     }
   })
 
+  .state('app.mapadevisitantes', {
+    cache: false,
+    url: '/shop/mapadevisitantes',
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/shop/mapadevisitantes.html"
+      }
+    }
+  })
+
   .state('app.numeros', {
     cache: false,
     url: '/shop/numeros',
@@ -476,32 +497,6 @@ $stateProvider
         controller: 'paginasCtrl'
       }
     }
-  })
-
-
-  //AUTH ROUTES
-  .state('facebook-sign-in', {
-    url: "/facebook-sign-in",
-    templateUrl: "views/auth/facebook-sign-in.html",
-    controller: 'WelcomeCtrl'
-  })
-
-  .state('dont-have-facebook', {
-    url: "/dont-have-facebook",
-    templateUrl: "views/auth/dont-have-facebook.html",
-    controller: 'WelcomeCtrl'
-  })
-
-  .state('create-account', {
-    url: "/create-account",
-    templateUrl: "views/auth/create-account.html",
-    controller: 'CreateAccountCtrl'
-  })
-
-  .state('welcome-back', {
-    url: "/welcome-back",
-    templateUrl: "views/auth/welcome-back.html",
-    controller: 'WelcomeBackCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback
@@ -510,54 +505,30 @@ $stateProvider
 });
 
 
-// angular.module('expoinga').controller('cameraCtrl', function($scope, $ionicModal, $cordovaCamera) {
-  
-//   $scope.takePicture = function() {
-//         var options = { 
-//             quality : 90, 
-//             destinationType : Camera.DestinationType.DATA_URL, 
-//             sourceType : Camera.PictureSourceType.CAMERA, 
-//             allowEdit : false,
-//             encodingType: Camera.EncodingType.JPEG,
-//             targetWidth: 300,
-//             targetHeight: 300,
-//             saveToPhotoAlbum: false,
-//             correctOrientation:true
-//         };
- 
-//         $cordovaCamera.getPicture(options).then(function(imageData) {
-//             $scope.imgURI = "data:image/jpeg;base64," + imageData;
-//         }, function(err) {
-//             // An error occured. Show a message to the user
-//         });
+angular.module('expoinga').controller('feedsCtrl', function($scope, $ionicScrollDelegate, $timeout, $ionicLoading, ApiService) {
 
-//         //$cordovaCamera.cleanup().then(); // only for FILE_URI
-//     };
+  $ionicLoading.show({
+    content: 'Carregando',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 200
+  });
 
 
-//   $ionicModal.fromTemplateUrl('views/app/legal/terms-of-service.html', {
-//     scope: $scope,
-//     animation: 'slide-in-up'
-//   }).then(function(modal) {
-//     $scope.terms_of_service_modal = modal;
-//   });
-
-//   $scope.showTerms = function() {
-//     $scope.terms_of_service_modal.show();
-//   };
-
-// });
-
-angular.module('expoinga').controller('LoginwithFacebook',function($scope,$cordovaOauth){
- $scope.LoginwithFacebook = function(){
- console.log("clicked");
- $cordovaOauth.facebook("1733143860298328", ["email"]).then(function(result) {
- alert("Auth Success!" +result);
- }, function(error) {
- alert("Auth Failed!" +error);
- });
- };
+  function feeds () {
+      ApiService._feeds()
+      .success(function (data) {
+        $timeout(function () {
+        $ionicLoading.hide();
+          $scope.feeds = data;
+        },1000);
+      });
+  }
+    feeds(); 
 });
+
+
 
 angular.module('expoinga').controller('programacaoCtrl', function($scope, $ionicScrollDelegate, $timeout, $ionicLoading, ApiService) {
 
@@ -698,7 +669,7 @@ angular.module('expoinga').controller('ShopCtrl', function($scope, $ionicScrollD
     shopGet();
 });
 
-angular.module('expoinga').controller('eleicaoCtrl', function($scope, $cordovaDevice, $http, $ionicScrollDelegate, $timeout, $ionicLoading, ApiService) {
+angular.module('expoinga').controller('eleicaoCtrl', function($scope, $http, $ionicScrollDelegate, $timeout, $ionicLoading, ApiService) {
 
   $ionicLoading.show({
     content: 'Carregando',
@@ -757,7 +728,6 @@ angular.module('expoinga').controller('eleicaoCtrl', function($scope, $cordovaDe
     eleicao();
     eleicaoGet();
 });
-
 
 
 angular.module('expoinga').controller('paginasCtrl', function($scope, $ionicScrollDelegate, $timeout, $ionicLoading, ApiService) {
@@ -824,11 +794,28 @@ angular.module('expoinga').controller('showsCtrl', function($scope, $timeout, $i
   }
     shows();
     showsGet(); 
-})
+});
 
 
- 
-.service('ApiService', function ($http, $stateParams) {
+angular.module('expoinga').service('UserService', function () {
+  // For the purpose of this example I will store user data on ionic local storage but you should save it on a database
+  var setUser = function(user_data) {
+    window.localStorage.starter_facebook_user = JSON.stringify(user_data);
+  };
+
+  var getUser = function(){
+    return JSON.parse(window.localStorage.starter_facebook_user || '{}');
+  };
+
+  return {
+    getUser: getUser,
+    setUser: setUser
+  };
+});
+  
+
+
+angular.module('expoinga').service('ApiService', function ($http, $stateParams) {
 
   var APIcms = 'http://www.expoinga.com.br/restrito/api/';
     
@@ -931,10 +918,8 @@ angular.module('expoinga').controller('showsCtrl', function($scope, $timeout, $i
   };
 
   votacao = function () {
-    //http://www.expoinga.com.br/restrito/controller/eleicaoController.php?votar=S&iduser=885522&candidata=20
     return $http.get("http://www.expoinga.com.br/restrito/controller/votacaoController.php", { 
       params: {
-        //id: $stateParams.id
         id:"10",
         iduser: "000",
         candidata: $stateParams.id
@@ -942,13 +927,13 @@ angular.module('expoinga').controller('showsCtrl', function($scope, $timeout, $i
     });
   };
 
-
-  // posts = function () {
-  //   return $http.get("http://flaviovicente.com.br/wp-json/wp/v2/posts?page=1&per_page=10");
-  // };
+  feeds = function () {
+    return $http.get(APIcms + "banner.php?&user=4&categoria=feed");
+  };
 
 
   return {
+    _feeds : feeds,
     _programacao : programacao,
     _programacaoGet : programacaoGet,
     _noticia : noticia,

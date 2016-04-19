@@ -12,7 +12,7 @@
                     <img class="user-image" ng-src="http://www.expoinga.com.br/restrito/classes/resize.php?src=/restrito/img/eleicao/{{item.imagem}}&h=200&w=200&zc=1&q=90&s=0" spinner-on-load>
                 	</pre-img>
                 </div>
-                <h2 class="user-name">{{item.nome}}</h2>
+                
                 <p class="user-resume">
                   {{item.idade}} Anos
                 </p>
@@ -32,9 +32,17 @@
       </div>
     </div>
     
+    <div class="button-bar  button-full bar-balanced highlighted" ng-disabled="button_clicked">
+      <a class="button"> {{item.nome}} </a>
+    </div>
+
+    <!--
     <div class="button-bar  button-full bar-balanced highlighted" ng-click="button_clicked || votar(id) || {buttonSelected: isSelected($index)}" ng-class="{buttonSelected: isSelected($index)}" ng-disabled="button_clicked">
+      <a class="button"> teste </a>
       <a class="button"> <i class="icon ion-thumbsup"></i> <span class="desabilitado"> <b>Votar</b><i> <i class="icon ion-thumbsup"></i> Votado com Sucesso</i> </span></a>
     </div>
+  -->
+
     <div class="button-bar  button-full bar-stable highlighted">
       <a class="button" ng-href="http://instagram.com/{{item.instagram}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'><i class="icon ion-social-instagram"></i> </a>
       <a class="button" ng-href="http://facebook.com/{{item.facebook}}" onclick='window.open(this.href, "_system", "location=yes"); return false;' class="button"> <i class="icon ion-social-facebook"></i> </a>

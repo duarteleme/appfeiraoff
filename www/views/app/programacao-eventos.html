@@ -12,6 +12,12 @@
 
 
 <ion-view view-title="Eventos" class="shop-popular-view">
+  
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+
   <ion-content>
     <div class="list">
       <a class="item" ng-repeat="item in programacao" ui-sref="app.programacao-detalhe({id: item.id})">

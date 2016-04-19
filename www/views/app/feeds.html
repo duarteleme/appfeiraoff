@@ -1,0 +1,36 @@
+<ion-view view-title="#ExpoingaEuVou" cache-view="true" class="feed-view">
+  <ion-content class="post-card-outer">
+    <div ng-repeat="item in feeds">
+      <div class="post-card" >
+        <div class="list card">
+          <div class="item item-image" ng-show="item.id != '23'">
+            <pre-img ratio="_1_1" helper-class="main-image">
+              <img ng-src="{{item.link}}" spinner-on-load>
+            </pre-img>
+          </div>
+
+          <a ng-href="http://www.instagram.com/{{item.titulo}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
+          <i class="post-like-action icon ion-social-instagram"></i>
+          </a>
+
+          <div class="item item-body">
+            <p class="card-description">
+              <a class="card-user-name">
+                <i class="icon ion-person"></i> {{item.titulo}}
+              </a>
+            </p>
+            <span class="card-moment-posted" am-time-ago="post.date"></span>
+            <div class="card-avatar-image-outer">
+              <a>
+                <pre-img ratio="_1_1" helper-class="avatar-image rounded-image">
+                  <img ng-src="{{item.descricao}}" spinner-on-load>
+                </pre-img>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

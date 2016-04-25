@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.startapplabs.expoinga" version="1.4.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.startapplabs.expoinga" version="1.5.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Expoinga</name>
   <description>
     Aplicativo do Evento Expoingá 2016, feira do agronegócio que acontece na cidade de Maringá no Paraná
@@ -12,16 +12,16 @@
   <allow-navigation href="*"/>
   <allow-intent href="*"/>
   <allow-intent href="mailto:*"/>
+
+  <preference name="ShowSplashScreenSpinner" value="false"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="4000"/>
-  <preference name="orientation" value="portrait"/>
-  <feature name="StatusBar">
-    <param name="ios-package" onload="true" value="CDVStatusBar"/>
-  </feature>
+  <preference name="orientation" value="portrait"/> 
+  
   <platform name="android">
     <icon src="resources\android\icon\drawable-ldpi-icon.png" density="ldpi"/>
     <icon src="resources\android\icon\drawable-mdpi-icon.png" density="mdpi"/>

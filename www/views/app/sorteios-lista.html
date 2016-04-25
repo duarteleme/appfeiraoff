@@ -11,14 +11,14 @@
       <div class="item item-body" ng-show="item.id != '27'">
         <img class="full-image" src="img/topshow.jpg">
         <p>
-          {{item.descricao}}
+          Leia o Regulamento para participar deste sorteio!
         </p>
         <p>
-          <a href="#" class="subdued"><i class="icon ion-ios-clock-outline"></i> {{item.informacao}}...</a>
+          <a href="#" class="subdued"><i class="icon ion-ios-clock-outline"></i> {{item.informacao}}</a>
         </p>
 
-        <a ng-href="http://www.expoinga.com.br/sorteios/index.php?sorteio={{item.id}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'class="facebook-sign-in button-large icon-left ion-pricetag button button-block">
-            Quero Participar
+        <a ui-sref="app.programacao-detalhe({id: item.id})" class="facebook-sign-in button-large icon-left ion-pricetag button button-block">
+         Veja o Regulamento
         </a>
 
       </div>

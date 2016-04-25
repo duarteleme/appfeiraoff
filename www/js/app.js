@@ -30,7 +30,12 @@ angular.module('expoinga', [
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-
+    if(ionic.Platform.isIOS()){
+      setTimeout(function(){
+        navigator.splashscreen.hide();
+      }, 3000 - 1000);
+    }
+    
     // Check for network connection
     if(window.Connection) {
       if(navigator.connection.type == Connection.NONE) {
@@ -46,9 +51,6 @@ angular.module('expoinga', [
       }
     }
 
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
@@ -61,29 +63,10 @@ $stateProvider
   .state('app', {
     url: "/app",
     abstract: true,
-    templateUrl: "views/app/side-menu.html",
-    controller: 'AppCtrl'
+    templateUrl: "views/app/side-menu.html"
   })
 
-  .state('app.feed', {
-    url: "/feed",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/feed.html",
-        controller: "FeedCtrl"
-      }
-    }
-  })
 
-  .state('app.sorteios', {
-    url: "/sorteios",
-    views: {
-      'menuContent': {
-        templateUrl: 'views/app/sorteios.html',
-        controller: 'faceloginCtrl'
-      }
-    }
-  })
 
   .state('app.sorteios-lista', {
     cache: false,
@@ -193,15 +176,6 @@ $stateProvider
     }
   })
 
-  .state('app.settings', {
-    url: "/settings",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/profile/settings.html",
-        controller: 'SettingsCtrl' 
-      }
-    }
-  })
 
   .state('app.concurso', {
     cache: false,
@@ -348,35 +322,9 @@ $stateProvider
     }
   })
 
-  .state('app.cart', {
-    url: "/cart",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/shop/cart.html",
-        controller: 'ShoppingCartCtrl'
-      }
-    }
-  })
+  
 
-  .state('app.shipping-address', {
-    url: "/shipping-address",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/shop/shipping-address.html",
-        controller: "CheckoutCtrl"
-      }
-    }
-  })
-
-  .state('app.checkout', {
-    url: "/checkout",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/shop/checkout.html",
-        controller: "CheckoutCtrl"
-      }
-    }
-  })
+  
 
   .state('app.otema', {
     cache: false,

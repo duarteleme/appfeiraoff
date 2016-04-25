@@ -29,24 +29,25 @@
         </a>
       </div>
 
+
       <div ng-show="item.tipo == 'sorteio'">
-      <a ng-href="http://www.expoinga.com.br/sorteios/index.php?sorteio={{item.id}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'class="facebook-sign-in button-large icon-left ion-pricetag button button-block">
-            Quero Participar
-        </a>
+      <a ng-href="http://www.expoinga.com.br/sorteios/ios/index.php?sorteio={{item.id}}" onclick='window.open(this.href, "_system", "location=no"); return false;'class="facebook-sign-in button-large icon-left ion-pricetag button button-block  button button-block button-calm highlighted">
+       Quero Participar do sorteio
+      </a>
       </div>
 
-      <div ng-show="item.tipo == 'show'">
-        
+
+      <div ng-show="item.tipo == 'show'">        
         <div class="row split-actions">
           <div class="col">
-            <a ng-href="{{item.url1}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
+            <a ng-href="http://www.expoinga.com.br/shows/index.php?url={{item.url1}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
             <button class="button button-block button-balanced highlighted">
                Comprar ingresso
             </button>
             </a>
           </div>
           <div class="col">
-            <a ng-href="{{item.url1}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
+            <a ng-href="http://www.expoinga.com.br/shows/index.php?url={{item.url2}}" onclick='window.open(this.href, "_system", "location=yes"); return false;'>
             <button class="button button-block button-calm highlighted">
                Camarote Prime
             </button>
